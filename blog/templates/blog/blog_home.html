@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+SADDAM - Blog
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container-fluid mt-4">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% for post in posts %}
+      <div class="col">
+        <div class="content text-white bg-dark p-2">
+          <h2><a href="{% url 'blog_detail' post.slug %}" style="text-decoration: none; font-weight: 800;"><span>{{ post.title }}</span></a></h2>
+          <p>Created at: {{ post.created.date }}</p>
+          <p>{{ post.content | slice:":300" }}...</p>
+        </div>
+      </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
